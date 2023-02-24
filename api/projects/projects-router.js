@@ -1,6 +1,7 @@
 // Write your "projects" router here!
 const express = require('express')
 const Projects = require('./projects-model')
+const { validateProjectId } = require('./projects-middleware')
 
 const router = express.Router();
 
@@ -12,11 +13,8 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
-// router.use((err,req,res,next) => {
-//     res.status(500).json({
-//         message: err.message,
-//         stack: err.stack,
-//     })
-// })
+router.get('/:id', validateProjectId, (req, res, next) => {
+    res.status(200).json(req.prj)
+})
 
 module.exports = router;
