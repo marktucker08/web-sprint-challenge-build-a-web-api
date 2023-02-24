@@ -18,6 +18,21 @@ async function validateActionsId(req, res, next) {
     }
   }
 
+  function validateAction(req, res, next) {
+    // DO YOUR MAGIC
+    const { project_id, notes, description } = req.body
+    if (notes !== undefined && typeof notes === 'string' && notes.length && description !== undefined && description.length && project_id) {
+        next()
+    }
+    // if (description !== undefined && typeof description === 'string' && description.length && description.trim().length > 0) {
+    //     next()
+     else {
+        res.status(400).json({ message: "missing required field" })
+    }
+  }
+
+
   module.exports = {
     validateActionsId,
+    validateAction
   }

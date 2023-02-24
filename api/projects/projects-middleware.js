@@ -20,8 +20,8 @@ async function validateProjectId(req, res, next) {
 
   function validatePost(req, res, next) {
     // DO YOUR MAGIC
-    const { name, description } = req.body
-    if (name !== undefined && typeof name === 'string' && name.length && name.trim().length > 0 && description !== undefined && description.length) {
+    const { name, description, completed } = req.body
+    if (name !== undefined && typeof name === 'string' && name.length && name.trim().length > 0 && description !== undefined && description.length && completed !== undefined) {
         next()
     }
     // if (description !== undefined && typeof description === 'string' && description.length && description.trim().length > 0) {
